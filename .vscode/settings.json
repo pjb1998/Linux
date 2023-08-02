@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "cstdio": "c",
+        "fstream": "c",
+        "atomic": "c",
+        "*.tcc": "c",
+        "sstream": "c",
+        "stat.h": "c",
+        "fcntl.h": "c",
+        "unistd.h": "c",
+        "exception": "c",
+        "new": "c",
+        "ostream": "c",
+        "streambuf": "c",
+        "typesizes.h": "c",
+        "types.h": "c",
+        "pwd.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
+}
