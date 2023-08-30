@@ -17,7 +17,8 @@
         "typesizes.h": "c",
         "types.h": "c",
         "pwd.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "wait.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
