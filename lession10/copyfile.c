@@ -53,6 +53,5 @@ int main() {
     // 4.关闭文件
     close(destfd);
     close(srcfd);
-
     return 0;
 }
