@@ -19,7 +19,9 @@
         "pwd.h": "c",
         "stdlib.h": "c",
         "wait.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "istream": "c",
+        "limits": "c"
     },
 
     
