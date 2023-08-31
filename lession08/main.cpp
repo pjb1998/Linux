@@ -22,7 +22,6 @@ int main() {
     len = sizeof(array1) / sizeof(int);
     
     selectSort(array1, len);
-    
     // 遍历
     cout << "选择排序之后的数组: ";
     for(int i = 0; i < len; i++) {
