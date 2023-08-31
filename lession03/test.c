@@ -13,7 +13,6 @@ int main()
     {
         printf("hello, GCC!!!\n");
     }
-
     int b, c, d, f;
     b = 10;
     c = b;
