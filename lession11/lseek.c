@@ -45,7 +45,6 @@
 #include <stdio.h>
 
 int main() {
-
     int fd = open("hello.txt", O_RDWR);
 
     if(fd == -1) {
