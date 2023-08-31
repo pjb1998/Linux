@@ -1,3 +1,5 @@
-.vscode/*
-.vscode
-main.c
+#.gitignore文件只对尚未被 Git 跟踪的文件起作用。如果某个文件已经被 Git 跟踪，那么即使在.gitignore中设置了忽略规则，该文件仍然会被纳入版本控制。
+#如果你想将已跟踪的文件从版本控制中移除，可以使用 git rm --cached 命令
+#添加文件夹：lession22
+#添加文件：man.c
+
