@@ -22,6 +22,7 @@ int main() {
 
     // 创建进程
     pid_t pid = fork();
+    // printf("after pipe\n");
     if(pid > 0) {
         // 父进程
         printf("i am parent process, pid : %d\n", getpid());
