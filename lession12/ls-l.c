@@ -10,7 +10,6 @@
 // 模拟实现 ls -l 指令
 // -rw-rw-r-- 1 nowcoder nowcoder 12 12月  3 15:48 a.txt
 int main(int argc, char * argv[]) {
-
     // 判断输入的参数是否正确
     if(argc < 2) {
         printf("%s filename\n", argv[0]);
