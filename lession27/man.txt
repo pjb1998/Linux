@@ -1,0 +1,8 @@
+创建一个新共享内存段或取得一个既有共享内存段的标识符
+shmget-share memory get
+附上共享内存段,即使该段成为调用进程的虚拟内存的一部分
+shmat-share memory attach
+分离共享内存段,进程就无法再引用这块共享内存了
+shmdt-share memory detach
+删除共享内存段,只有当当前所有附加内存段的进程都与之分离之后内存段才会销毁
+shmctl-share memory control
