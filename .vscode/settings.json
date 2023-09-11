@@ -21,7 +21,8 @@
         "wait.h": "c",
         "stdio.h": "c",
         "istream": "c",
-        "limits": "c"
+        "limits": "c",
+        "shm.h": "c"
     },
 
     
