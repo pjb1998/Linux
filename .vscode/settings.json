@@ -22,7 +22,16 @@
         "stdio.h": "c",
         "istream": "c",
         "limits": "c",
-        "shm.h": "c"
+        "shm.h": "c",
+        "time.h": "c",
+        "thread-shared-types.h": "c",
+        "pthread.h": "c",
+        "optional": "c",
+        "system_error": "c",
+        "array": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c"
     },
 
     
