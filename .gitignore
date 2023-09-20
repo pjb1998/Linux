@@ -2,4 +2,4 @@
 #如果你想将已跟踪的文件从版本控制中移除，可以使用 git rm --cached 命令
 #添加文件夹：lession22
 #添加文件：man.c
-
+.vscode
