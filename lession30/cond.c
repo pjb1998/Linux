@@ -1,15 +1,24 @@
 /*
     条件变量的类型 pthread_cond_t
+    
+    //初始化条件变量
     int pthread_cond_init(pthread_cond_t *restrict cond, const pthread_condattr_t *restrict attr);
+
+    //销毁条件变量
     int pthread_cond_destroy(pthread_cond_t *cond);
+
+    //线程等待信号触发，如果没有信号触发，无限期等待下去，线程会阻塞。
     int pthread_cond_wait(pthread_cond_t *restrict cond, pthread_mutex_t *restrict mutex);
-        - 等待，调用了该函数，线程会阻塞。
+
+    //线程等待一定的时间，如果超时或有信号触发，线程唤醒。
     int pthread_cond_timedwait(pthread_cond_t *restrict cond, pthread_mutex_t *restrict mutex, const struct timespec *restrict abstime);
-        - 等待多长时间，调用了这个函数，线程会阻塞，直到指定的时间结束。
+    
+    //唤醒阻塞在该条件变量上的一个线程或者多个等待的线程
     int pthread_cond_signal(pthread_cond_t *cond);
-        - 唤醒一个或者多个等待的线程
+
+    //唤醒阻塞在该条件变量上的所有线程
     int pthread_cond_broadcast(pthread_cond_t *cond);
-        - 唤醒所有的等待的线程
+
 */
 #include <stdio.h>
 #include <pthread.h>
@@ -18,6 +27,7 @@
 
 // 创建一个互斥量
 pthread_mutex_t mutex;
+
 // 创建条件变量
 pthread_cond_t cond;
 
@@ -33,6 +43,7 @@ void * producer(void * arg) {
 
     // 不断的创建新的节点，添加到链表中
     while(1) {
+        // sleep(1);
         pthread_mutex_lock(&mutex);
         struct Node * newNode = (struct Node *)malloc(sizeof(struct Node));
         newNode->next = head;
@@ -53,6 +64,7 @@ void * producer(void * arg) {
 void * customer(void * arg) {
 
     while(1) {
+        // sleep(1);
         pthread_mutex_lock(&mutex);
         // 保存头结点的指针
         struct Node * tmp = head;
@@ -62,13 +74,17 @@ void * customer(void * arg) {
             head = head->next;
             printf("del node, num : %d, tid : %ld\n", tmp->num, pthread_self());
             free(tmp);
-            pthread_mutex_unlock(&mutex);
+            pthread_mutex_unlock(&mutex);//解锁
             usleep(100);
         } else {
             // 没有数据，需要等待,有数据，不阻塞，就继续运行
             // 当这个函数调用阻塞的时候，会对互斥锁进行解锁，当不阻塞的，继续向下执行，会重新加锁。
             pthread_cond_wait(&cond, &mutex);
-            pthread_mutex_unlock(&mutex);
+            /*
+                这里解锁是否多余？
+                当链表中没有数据才能进到这个else分支中，此时用pthread_cond_wait就能阻塞并且解锁，
+            */
+            pthread_mutex_unlock(&mutex);   
         }
     }
     return  NULL;
