@@ -48,7 +48,7 @@ int main(void) {
 
     while(1) {
         sleep(1);
-        int ret = epoll_wait(epfd, epollEvents, sizeof(epollEvents)/sizeof(epollEvents[0]), -1);
+        int ret = epoll_wait(epfd, epollEvents, sizeof(epollEvents)/sizeof(epollEvents[0]), -1);    //函数将返回发生事件的数量
         if(ret == -1) {
             perror("epoll_wait");
             exit(-1);
@@ -60,6 +60,11 @@ int main(void) {
                     // 监听的文件描述符有数据达到，有客户端连接
                     struct sockaddr_in cliaddr;
                     int len = sizeof(cliaddr);
+                    /*
+                        accept()接受一个客户端的连接请求，并返回一个新的套接字（被动监听客户端的三次握手连接请求，三次握手成功即建立连接成功）。
+                        所谓“新的”就是说这个套接字与之前socket()返回的用于“监听”和“接受客户端的连接请求”的套接字不是同一个套接字。
+                        与本次接受的客户端之间通信是通过在这个新的套接字上发送和接收数据来完成的。既这个套接字是用于数据传输的的。
+                    */
                     int cfd = accept(lfd, (struct sockaddr *)&cliaddr, &len);
 
                     epollEvent.events = EPOLLIN;
