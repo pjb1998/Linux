@@ -36,9 +36,6 @@ public:
     void process(); // 处理客户端请求
     bool read();// 非阻塞读
     bool write();// 非阻塞写
-    void addfd( int epollfd, int fd, bool one_shot );
-    void removefd( int epollfd, int fd );
-    void modfd(int epollfd, int fd, int ev);
 public:
     static int m_epollfd;       // 所有socket上的事件都被注册到同一个epoll内核事件中，所以设置成静态的
     static int m_users_count;    // 统计用户的数量
