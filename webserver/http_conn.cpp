@@ -1,5 +1,10 @@
 #include "http_conn.h"
 
+//对静态变量初始化
+int http_conn::m_epollfd = -1;  
+int http_conn::m_users_count = 0;
+
+//全局函数
 int setnonblocking( int fd ) {
     int old_option = fcntl( fd, F_GETFL );
     int new_option = old_option | O_NONBLOCK;
@@ -36,6 +41,7 @@ void modfd(int epollfd, int fd, int ev) {
     epoll_ctl( epollfd, EPOLL_CTL_MOD, fd, &event );
 }
 
+// 成员函数
 // 关闭连接
 void http_conn::close_conn() {
     if(m_sockfd != -1) {
@@ -60,19 +66,19 @@ void http_conn::init(int sockfd, const sockaddr_in& addr){
 
 // 循环读取客户数据，直到无数据可读或者对方关闭连接
 bool http_conn::read() {
-    printf("read\n");
+    printf("read ing\n");
     return true;
 }
 
 // 写HTTP响应
 bool http_conn::write()
 {
-    printf("write\n");
+    printf("write ing\n");
     return true;
 }
 
 // 由线程池中的工作线程调用，这是处理HTTP请求的入口函数
 void http_conn::process() {
     // 解析HTTP请求
-    printf("processing\n");
+    printf("parse request，create response\n");
 }

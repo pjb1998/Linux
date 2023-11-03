@@ -49,6 +49,12 @@ class threadpool{
 //构造函数
 template<typename T>
 threadpool<T>::threadpool(int thread_number,int max_requests){
+    
+    //初始化线程池中的参数
+    m_thread_number = thread_number;
+    m_max_requests = max_requests;
+    m_stop = false;
+    m_threads = NULL;
 
     //对于非法传入的参数->抛出异常
     if((thread_number <=0) || (max_requests <=0)){ 
@@ -76,11 +82,7 @@ threadpool<T>::threadpool(int thread_number,int max_requests){
         }   
     }
 
-    //初始化线程池中的参数
-    m_thread_number = thread_number;
-    m_max_requests = max_requests;
-    m_stop = false;
-    m_threads = NULL;
+
 
 }
 
